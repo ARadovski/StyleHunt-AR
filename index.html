@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <title>8th Wall Web: Flyer</title>
+
+  <script src="//cdn.8thwall.com/web/aframe/8frame-0.9.0.min.js"></script>
+    
+<!--  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.0.1/dist/aframe-extras.min.js"></script>-->
+  <script src="//cdn.8thwall.com/web/aframe/aframe-extras-4.2.0.min.js"></script>
+
+
+  <!-- XR Extras - provides utilities like load screen, almost there, and error handling.
+         See github.com/8thwall/web/xrextras -->
+  <script src="//cdn.8thwall.com/web/xrextras/xrextras.js"></script>
+    
+  <script src="//cdn.8thwall.com/web/aframe/aframe-animation-component-5.1.2.min.js"></script>
+
+  <!-- 8thWall Web - Replace the app key here with your own app key -->
+  <script src="//apps.8thwall.com/xrweb?appKey=yh6mKgL9RU0qpstWBgGhF2INHoIuYjCWQRKaujPlQ3sDMru5KDEXY8b1gPJC7J4X2Nf2uI"></script>
+    
+</head>
+
+<body>
+
+  <a-scene
+    xrweb="disableWorldTracking: true"
+    xrextras-gesture-detector
+    xrextras-almost-there
+    xrextras-loading
+    xrextras-runtime-error>
+
+    <a-assets>
+      <!-- Credit to Poly by Google for the model: https://poly.google.com/view/dA5osnS0Rzj -->
+      <a-asset-item id="jelly-glb" src="jellyfish-model.glb"></a-asset-item>
+      <a-asset-item id="stylehint1-glb" src="appIcon01d.glb"></a-asset-item>
+        <a-asset-item id="camera" src="CameraLogo_e_origin.glb"></a-asset-item>
+        <a-asset-item id="andrey-wave60" src="Andrey_Wave60fps.glb"></a-asset-item>
+        <a-asset-item id="andrey-animated" src="Andrey_wAnimations7.glb"></a-asset-item>
+        <a-asset-item id="example" src="mixamo-animated-lowpoly.glb"></a-asset-item>
+      <img id="jelly-thumb" src="targets/hairyllama.jpg">
+      <video
+        id="jelly-video"
+        autoplay
+        muted
+        crossorigin="anonymous"
+        loop="true"
+        src="jellyfish-video.mp4">
+      </video>
+    </a-assets>
+
+    <a-camera
+      position="0 4 10"
+      raycaster="objects: .cantap"
+      cursor="fuse: false; rayOrigin: mouse;">
+    </a-camera>
+
+    <a-light type="directional" intensity="2" position="1 1 1" rotation="30 30 30"></a-light>
+
+    <a-light type="ambient" intensity="3"></a-light>
+
+    <!-- Note: "name:" must be set to the name of the image target uploaded to the 8th Wall Console -->
+    <!--<a-entity
+      xrextras-named-image-target="name: HairyLlama-3"
+      xrextras-play-video="video: #jelly-video; thumb: #jelly-thumb; canstop: true"
+      geometry="primitive: plane; height: 1; width: 0.79;">
+    </a-entity>
+
+
+    <!-- Note: "name:" must be set to the name of the image target uploaded to the 8th Wall Console -->
+    <a-entity xrextras-named-image-target="name: StyleHintLogoMarker6">
+      <!-- Add a child entity that can be rotated independently of the image target. -->
+      <a-entity xrextras-one-finger-rotate gltf-model="#example" 
+                scale="0.7 0.7 0.7" 
+                position="0 0.5 0.35" 
+                rotation="90 0 0"  
+                animation-mixer="clip: idle; loop: repeat"
+                >
+        </a-entity>
+    </a-entity>
+      
+      <!-- Note: "name:" must be set to the name of the image target uploaded to the 8th Wall Console -->
+    <a-entity xrextras-named-image-target="name: SH_model7">
+      <!-- Add a child entity that can be rotated independently of the image target. -->
+      <a-entity xrextras-one-finger-rotate gltf-model="#camera" 
+                scale="1.45 1.45 1.45" 
+                position="0 -0.19 -2.5" 
+                rotation="0 0 0"  
+                animation="property: scale; dir: alternate; to: 1.45 1.45 1.55; loop: true; dur: 1000"
+                >
+        </a-entity>
+    </a-entity>
+    
+      
+      <a-entity xrextras-named-image-target="name: HairyLlama-3">
+      <!-- Add a child entity that can be rotated independently of the image target. -->
+      <a-entity gltf-model="#andrey-animated" 
+                scale="5 5 5" 
+                position="0 0 0" 
+                rotation="90 0 0"
+                animation-mixer="clip: Walk_Sassy; loop: repeat"
+                >
+        </a-entity>
+    </a-entity>
+      
+      <!-- Note: "name:" must be set to the name of the image target uploaded to the 8th Wall Console -->
+    <a-entity xrextras-named-image-target="name: StyleHintLogoMarker6">
+      <!-- Add a child entity that can be rotated independently of the image target. -->
+      <a-entity xrextras-one-finger-rotate gltf-model="#stylehint1-glb" scale="0.16 0.174 0.3" position="0.02, -0.24, 0" rotation="0 0 0">
+        </a-entity>
+        
+    </a-entity>
+      
+      <!--<a-entity
+        id="model"
+        gltf-model="#animatedModel"
+        class="cantap"
+        scale="3 3 3"
+        animation-mixer="clip: idle; loop: repeat"
+        hold-drag two-finger-spin pinch-scale>
+      </a-entity> -->
+
+  </a-scene>
+
+</body>
+</html>
